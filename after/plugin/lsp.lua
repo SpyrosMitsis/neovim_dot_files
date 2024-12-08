@@ -55,6 +55,28 @@ require('mason-lspconfig').setup({
   }
 })
 
+require("mason-lspconfig").setup_handlers({
+  function(server_name)
+    if server_name == "pyright" then
+      require("lspconfig").pyright.setup({
+        settings = {
+          python = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportGeneralTypeIssues = "warning",
+                reportOptionalMemberAccess = "none",
+                reportOptionalSubscript = "none",
+                reportPrivateImportUsage = "none",
+              },
+              diagnosticMode = "openFilesOnly",
+            }
+          }
+        }
+      })
+    end
+  end
+})
+
 -- Completion configuration with a snippet engine
 local cmp = require('cmp')
 cmp.setup({

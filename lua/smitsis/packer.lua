@@ -32,7 +32,16 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",
 }
   use('nvim-lua/plenary.nvim')
-  use('ThePrimeagen/harpoon')
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+}
 
+  use {
+      "rcarriga/nvim-dap-ui",
+      requires = {"mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+  }}
 
 end)
